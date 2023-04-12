@@ -10,11 +10,11 @@ export default createStore({
     user,
     category
   },
-  //配置插件
+  // 配置插件
   plugins: [
     createPersistedState({
-      //本地存储名字
-      key: "erabbit-client-pc",
+      // 本地存储名字
+      key: 'erabbit-client-pc',
       paths: ['user', 'cart']
     })
   ]
