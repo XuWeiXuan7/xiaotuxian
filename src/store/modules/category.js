@@ -26,7 +26,7 @@ export default {
     actions: {
         async getList({ commit }) {
             const { result } = await findAllCategory()
-            commit("setCategory", result)
+            commit("setList", result)
         },
         async getCategory({ commit }) {
             const { result } = await findAllCategory()
@@ -35,7 +35,7 @@ export default {
                 item.open = false
             })
             //获取数据成功，提交mutations进行数据修改
-            commit('setCategory', result)
+            commit('setList', result)
         }
     }
 }

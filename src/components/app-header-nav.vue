@@ -7,9 +7,10 @@
         :key="item.id"
         @mouseenter="show(item)"
         @mouseleave="hide(item)">
-      <router-link :to="`/category/sub/${sub.id}`"
+      <router-link :to="`/category/sub/${item.id}`"
                    @click="hide(item)">{{item.name}}</router-link>
-      <div class="layer">
+      <div class="layer"
+           :class="{open:item.open}">
         <ul>
           <li v-for="sub in item.children"
               :key="sub.id">
@@ -33,6 +34,7 @@ export default {
   name: 'AppHeaderNav',
   setup() {
     const store = useStore()
+    //vuex中的数据要放到计算属性里面
     const list = computed(() => {
       return store.state.category.list
     })
