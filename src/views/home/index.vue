@@ -5,6 +5,11 @@
         <!-- 左侧分类 -->
         <HomeCategory />
         <HomeBanner />
+        <HomeNew></HomeNew>
+        <HomeHot></HomeHot>
+        <HomeBrand></HomeBrand>
+        <HomeProduct></HomeProduct>
+        <HomeSpecial></HomeSpecial>
       </div>
     </div>
   </div>
@@ -13,10 +18,15 @@
 import { computed, reactive } from 'vue'
 import HomeCategory from '@/views/home/components/home-category.vue'
 import HomeBanner from '@/views/home/components/home-banner.vue'
+import HomeNew from '@/views/home/components/home-new.vue'
+import HomeHot from '@/views/home/components/home-hot.vue'
+import HomeBrand from '@/views/home/components/home-brand.vue'
+import HomeProduct from '@/views/home/components/home-product.vue'
+import HomeSpecial from '@/views/home/components/home.special.vue'
 import { useStore } from 'vuex'
 export default {
   name: 'PageHome',
-  components: { HomeCategory, HomeBanner },
+  components: { HomeCategory, HomeBanner, HomeNew, HomeHot, HomeBrand, HomeProduct, HomeSpecial },
 }
 </script>
 <style scoped lang="less">

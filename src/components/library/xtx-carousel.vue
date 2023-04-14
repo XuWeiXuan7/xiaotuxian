@@ -14,19 +14,22 @@
       </li>
     </ul>
     <a href="javascript:;"
-       class="carousel-btn prev"><i class="iconfont icon-angle-left"></i></a>
+       class="carousel-btn prev"
+       @click="toggle(-1)"><i class="iconfont icon-angle-left"></i></a>
     <a href="javascript:;"
-       class="carousel-btn next"><i class="iconfont icon-angle-right"></i></a>
+       class="carousel-btn next"
+       @click="toggle(1)"><i class="iconfont icon-angle-right"></i></a>
     <div class="carousel-indicator">
       <span v-for="(item,i) in sliders"
             :key="i"
-            :class="{active:index===i}"></span>
+            :class="{active:index===i}"
+            @click="toggle(i)"></span>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 export default {
   name: 'XtxCarousel',
   props: {
@@ -73,7 +76,25 @@ export default {
         autoPlayFn()
       }
     }
-    return { index, stop, start }
+    const toggle = (step) => {
+      index.value = 0
+      const newIndex = index.value + step
+      console.log(newIndex, step);
+      if (newIndex >= props.sliders.length) {
+        index.value = 0
+        return
+      }
+      if (newIndex < 0) {
+        index.value = props.sliders.length - 1
+        return
+      }
+      index.value = newIndex
+    }
+    // 组件消耗，清理定时器
+    onUnmounted(() => {
+      clearInterval(timer)
+    })
+    return { index, stop, start, toggle }
   }
 }
 </script>
@@ -142,7 +163,7 @@ export default {
       opacity: 0;
       transition: all 0.5s;
       &.prev {
-        left: 20px;
+        left: 270px;
       }
       &.next {
         right: 20px;

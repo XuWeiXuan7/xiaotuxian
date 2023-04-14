@@ -7,7 +7,7 @@
       <AppHeaderNav></AppHeaderNav>
       <div class="search">
         <i class="iconfont icon-search"></i>
-        <input type="text"
+        <input type="password"
                placeholder="搜一搜">
       </div>
       <div class="cart">
